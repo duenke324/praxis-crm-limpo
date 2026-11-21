@@ -1,0 +1,14 @@
+{
+  "name": "praxis-crm",
+  "version": "1.0.0",
+  "description": "Praxis CRM — novo painel de gestão de clientes (Node.js + SQLite, sem dependências externas)",
+  "type": "module",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node --no-warnings server/server.js",
+    "reset-db": "node --no-warnings server/reset.js"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}

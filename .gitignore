@@ -1,0 +1,17 @@
+# Base de dados local e credenciais geradas no arranque (NUNCA enviar para o repositório)
+data/
+
+# Dependências e registos
+node_modules/
+*.log
+
+# Configuração local do ambiente de desenvolvimento
+.claude/
+.env
+.env.*
+
+# Sistema operativo / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
