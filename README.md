@@ -1,5 +1,10 @@
 # Praxis CRM — novo painel de gestão de clientes
 
+> **Branch `versao-limpa`** — arranca **sem pessoas nem dados de demonstração**: na primeira execução (`npm start`)
+> é criado apenas o utilizador **`admin` com Acesso total**, cuja password temporária fica em
+> `data/ADMIN-PASSWORD-INICIAL.txt`. Para recomeçar do zero: `npm run reset-db`. Os dados de demonstração continuam
+> disponíveis com `npm run start:demo` / `npm run reset-db:demo` (e na branch `main`).
+
 Redesenho completo do painel Praxis (OK! teleseguros / Via Directa), com base de dados real,
 todos os botões funcionais, gestão de contas de funcionários e auditoria.
 
@@ -17,7 +22,7 @@ Na **primeira execução** é criado o utilizador `admin` com uma password tempo
 `data/ADMIN-PASSWORD-INICIAL.txt`. No primeiro login é obrigatório definir uma password nova.
 Apague esse ficheiro depois.
 
-Para recomeçar do zero (apaga tudo, recria dados de demonstração e um novo admin):
+Para recomeçar do zero (apaga tudo e cria um novo admin com Acesso total, sem dados de demonstração):
 
 ```bash
 npm run reset-db

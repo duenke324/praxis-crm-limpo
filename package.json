@@ -1,14 +1,14 @@
 {
   "name": "praxis-crm",
   "version": "1.0.0",
-  "description": "Praxis CRM — novo painel de gestão de clientes (Node.js + SQLite, sem dependências externas)",
+  "description": "Praxis CRM (versão limpa) — só um administrador com Acesso total, sem dados de demonstração",
   "type": "module",
   "main": "server/server.js",
   "scripts": {
-    "start": "node --no-warnings server/server.js",
-    "start:limpo": "node --no-warnings server/server.js --limpo",
-    "reset-db": "node --no-warnings server/reset.js",
-    "reset-db:limpo": "node --no-warnings server/reset.js --limpo"
+    "start": "node --no-warnings server/server.js --limpo",
+    "reset-db": "node --no-warnings server/reset.js --limpo",
+    "start:demo": "node --no-warnings server/server.js",
+    "reset-db:demo": "node --no-warnings server/reset.js"
   },
   "engines": {
     "node": ">=22.13"
