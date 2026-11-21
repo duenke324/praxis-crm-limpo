@@ -6,7 +6,9 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node --no-warnings server/server.js",
-    "reset-db": "node --no-warnings server/reset.js"
+    "start:limpo": "node --no-warnings server/server.js --limpo",
+    "reset-db": "node --no-warnings server/reset.js",
+    "reset-db:limpo": "node --no-warnings server/reset.js --limpo"
   },
   "engines": {
     "node": ">=22.13"

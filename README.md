@@ -23,6 +23,25 @@ Para recomeçar do zero (apaga tudo, recria dados de demonstração e um novo ad
 npm run reset-db
 ```
 
+### Versão limpa (só o administrador, sem pessoas)
+
+Para usar com dados reais, arranque sem dados de demonstração: na primeira execução é criado **apenas o
+utilizador `admin` com Acesso total** (e a permissão de conceder Acesso total). Não há clientes, apólices,
+nem contas fictícias — só as listas de equipas e cargos.
+
+```bash
+npm run start:limpo
+```
+
+Para apagar tudo e recomeçar em modo limpo:
+
+```bash
+npm run reset-db:limpo
+```
+
+Também pode usar a variável `PRAXIS_DEMO=0`. A branch `versao-limpa` do repositório já arranca neste modo
+com `npm start`.
+
 Variáveis opcionais: `PORT` (por omissão 9090) e `HOST` (por omissão `127.0.0.1`; use `0.0.0.0` para
 aceitar ligações de outros PCs da rede).
 

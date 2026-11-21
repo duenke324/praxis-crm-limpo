@@ -10,6 +10,10 @@ export const DATA_DIR = path.join(__dirname, '..', 'data');
 fs.mkdirSync(DATA_DIR, { recursive: true });
 export const DB_FILE = path.join(DATA_DIR, 'praxis.db');
 
+// Modo de arranque: com dados de demonstração (por omissão) ou LIMPO — só um administrador com Acesso total,
+// sem clientes nem pessoas fictícias. Ative com o argumento --limpo ou a variável PRAXIS_DEMO=0.
+export const DEMO = !process.argv.includes('--limpo') && !['0', 'false', 'nao', 'não', 'no'].includes(String(process.env.PRAXIS_DEMO ?? '1').toLowerCase());
+
 export const db = new DatabaseSync(DB_FILE);
 db.exec('PRAGMA journal_mode = WAL; PRAGMA foreign_keys = ON;');
 
@@ -728,8 +732,10 @@ export function ensureAdmin() {
   const count = db.prepare('SELECT COUNT(*) AS n FROM users').get().n;
   if (count > 0) return null;
   const password = randomPassword(14);
-  db.prepare(`INSERT INTO users (username, name, email, role, team, password_hash, active, must_change_password, created_at)
-              VALUES ('admin', 'Administrador', NULL, 'admin', 'Administração', ?, 1, 1, ?)`).run(hashPassword(password), now());
+  // modo limpo: o único utilizador é o admin, com Acesso total e a permissão de conceder Acesso total
+  db.prepare(`INSERT INTO users (username, name, email, role, team, job_title, password_hash, active, must_change_password, can_grant_top, created_at)
+              VALUES ('admin', 'Administrador', NULL, ?, 'Administração', ?, ?, 1, 1, 1, ?)`)
+    .run(DEMO ? 'admin' : 'superadmin', DEMO ? null : 'Administrador(a) de Sistemas', hashPassword(password), now());
   const file = path.join(DATA_DIR, 'ADMIN-PASSWORD-INICIAL.txt');
   fs.writeFileSync(file,
     `Praxis CRM — credenciais iniciais do administrador\n\nUtilizador: admin\nPassword temporária: ${password}\n\n` +
@@ -739,13 +745,13 @@ export function ensureAdmin() {
 
 export function ensureSeed() {
   const n = db.prepare('SELECT COUNT(*) AS n FROM clients').get().n;
-  if (n === 0) seedDemo();
+  if (n === 0 && DEMO) seedDemo();
   backfillPolicies();
   backfillPolicyRisk();
   backfillClientHistory();
   ensureLookups();
   ensureLookupsV2();
-  const file = ensureDirectionAccounts();
+  const file = DEMO ? ensureDirectionAccounts() : null; // contas da Direção fictícias só no modo de demonstração
   ensureGrantOwner();
   renameLoginsToFmex();
   return file;
