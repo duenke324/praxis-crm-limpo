@@ -1,9 +1,9 @@
-# Praxis CRM — novo painel de gestão de clientes
+# Praxis CRM (versão limpa) — novo painel de gestão de clientes
 
-> **Branch `versao-limpa`** — arranca **sem pessoas nem dados de demonstração**: na primeira execução (`npm start`)
+> **Versão limpa** — arranca **sem pessoas nem dados de demonstração**: na primeira execução (`npm start`)
 > é criado apenas o utilizador **`admin` com Acesso total**, cuja password temporária fica em
 > `data/ADMIN-PASSWORD-INICIAL.txt`. Para recomeçar do zero: `npm run reset-db`. Os dados de demonstração continuam
-> disponíveis com `npm run start:demo` / `npm run reset-db:demo` (e na branch `main`).
+> disponíveis com `npm run start:demo` / `npm run reset-db:demo` (e no repositório [praxis-crm](https://github.com/duenke324/praxis-crm)).
 
 Redesenho completo do painel Praxis (OK! teleseguros / Via Directa), com base de dados real,
 todos os botões funcionais, gestão de contas de funcionários e auditoria.
@@ -44,8 +44,8 @@ Para apagar tudo e recomeçar em modo limpo:
 npm run reset-db:limpo
 ```
 
-Também pode usar a variável `PRAXIS_DEMO=0`. A branch `versao-limpa` do repositório já arranca neste modo
-com `npm start`.
+Também pode usar a variável `PRAXIS_DEMO=0`. Neste repositório `npm start` e `npm run reset-db` já usam este modo;
+a versão com dados de demonstração está em [praxis-crm](https://github.com/duenke324/praxis-crm).
 
 Variáveis opcionais: `PORT` (por omissão 9090) e `HOST` (por omissão `127.0.0.1`; use `0.0.0.0` para
 aceitar ligações de outros PCs da rede).
