@@ -10,6 +10,8 @@ todos os botões funcionais, gestão de contas de funcionários e auditoria.
 
 **Sem dependências externas:** usa apenas Node.js (≥ 22.13) com o SQLite nativo (`node:sqlite`).
 
+**Manual de utilização (Word):** [docs/Manual de Utilizacao - Praxis CRM.docx](docs/Manual%20de%20Utilizacao%20-%20Praxis%20CRM.docx) — instalação e todas as funcionalidades, com índice.
+
 ## Arrancar
 
 ```bash
